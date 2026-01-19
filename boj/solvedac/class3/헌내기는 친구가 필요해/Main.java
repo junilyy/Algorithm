@@ -81,3 +81,82 @@ class Main {
         return count;
     }
 }
+
+
+package modelly.modelly_be.global.config;
+
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+@Configuration
+public class FirebaseConfig {
+
+    // SPRING_CONFIG_ADDITIONAL_LOCATION=file:/app/config/application.yaml(서버 file path)
+    @Value("${spring.config.additional-location:}")
+    private String additionalLocation;
+
+    // json 파일명
+    private static final String FIREBASE_KEY_FILENAME = "moandi_serviceAccountKey.json";
+
+    @PostConstruct
+    public void init() {
+        try (InputStream serviceAccount = resolveServiceAccountStream()) {
+
+            FirebaseOptions options = FirebaseOptions.builder()
+                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                    .build();
+
+            if (FirebaseApp.getApps().isEmpty()) {
+                FirebaseApp.initializeApp(options);
+            }
+
+        } catch (Exception e) {
+            throw new IllegalStateException(
+                    "Failed to initialize Firebase. " +
+                            "For server: place " + FIREBASE_KEY_FILENAME + " next to application.yaml in the mounted config dir. " +
+                            "For local dev: put it under src/main/resources.",
+                    e
+            );
+        }
+    }
+
+    // 파일 path 확인
+    private InputStream resolveServiceAccountStream() throws Exception {
+        // 운영: additional-location(file:) 기준으로 application.yaml과 같은 디렉토리에서 찾기
+        if (additionalLocation != null && !additionalLocation.isBlank()) {
+            String first = additionalLocation.trim().split(",")[0].trim();
+
+            if (first.startsWith("file:")) {
+                String yamlPath = first.substring("file:".length()); // e.g. "/app/config/application.yaml"
+                File yaml = new File(yamlPath);
+                File dir = yaml.getParentFile();
+
+                if (dir != null) {
+                    File json = new File(dir, FIREBASE_KEY_FILENAME);
+                    if (json.exists() && json.isFile()) {
+                        return new FileInputStream(json);
+                    }
+                }
+            }
+        }
+
+        // 로컬 개발 fallback: classpath(src/main/resources)에서 찾기
+        InputStream cp = getClass().getResourceAsStream("/" + FIREBASE_KEY_FILENAME);
+        if (cp == null) {
+            throw new IllegalStateException(
+                    "Firebase service account key not found. " +
+                            "Server: mount it next to application.yaml. " +
+                            "Local: place it at src/main/resources/" + FIREBASE_KEY_FILENAME
+            );
+        }
+        return cp;
+    }
+}
