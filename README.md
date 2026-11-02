@@ -17,6 +17,10 @@ Java 알고리즘 문제풀이 저장소입니다. 하루 약 30분씩 꾸준히
 
 | 문법 | 설명 |
 | --- | --- |
+| `ArrayList<Integer>`, `add(value)`, `get(i)`, `size()` | 크기가 변하는 정수 리스트 선언, 값 추가, 인덱스로 조회, 원소 개수 확인 |
+| `list.get(list.size() - 1)` | 리스트의 마지막 값 조회. 비어 있으면 사용할 수 없음 |
+| `list.stream().mapToInt(n -> n).toArray()` | 리스트를 스트림으로 처리하고, `Integer`를 `int`로 자동 언박싱해 `int[]`로 변환 |
+| `Integer::intValue` | 각 `Integer`의 `int` 값을 꺼내는 메서드 참조. `n -> n.intValue()`와 같은 의미 |
 
 ## 다시 풀어볼 문제
 
