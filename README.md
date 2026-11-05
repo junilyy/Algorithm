@@ -21,6 +21,7 @@ Java 알고리즘 문제풀이 저장소입니다. 하루 약 30분씩 꾸준히
 | `list.get(list.size() - 1)` | 리스트의 마지막 값 조회. 비어 있으면 사용할 수 없음 |
 | `list.stream().mapToInt(n -> n).toArray()` | 리스트를 스트림으로 처리하고, `Integer`를 `int`로 자동 언박싱해 `int[]`로 변환 |
 | `Integer::intValue` | 각 `Integer`의 `int` 값을 꺼내는 메서드 참조. `n -> n.intValue()`와 같은 의미 |
+| `Arrays.copyOfRange(array, from, to)` | 원본 배열의 일부를 새 배열로 복사. 시작 인덱스 `from`은 포함하고 끝 인덱스 `to`는 제외 |
 
 ## 다시 풀어볼 문제
 
