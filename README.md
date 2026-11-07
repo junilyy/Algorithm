@@ -23,6 +23,9 @@ Java 알고리즘 문제풀이 저장소입니다. 하루 약 30분씩 꾸준히
 | `Integer::intValue` | 각 `Integer`의 `int` 값을 꺼내는 메서드 참조. `n -> n.intValue()`와 같은 의미 |
 | `Arrays.copyOfRange(array, from, to)` | 원본 배열의 일부를 새 배열로 복사. 시작 인덱스 `from`은 포함하고 끝 인덱스 `to`는 제외 |
 | `Arrays.sort(array, Collections.reverseOrder())` | `Integer[]`, `String[]` 등 자연 순서를 가진 객체 배열을 내림차순 정렬. `int[]` 같은 기본형 배열에는 사용할 수 없음 |
+| `HashMap<String, Integer>`, `put(key, value)`, `get(key)` | 문자열 키로 정수 값을 저장하고 조회. 같은 키로 `put()`하면 기존 값을 덮어씀 |
+| `map.getOrDefault(key, 0)` | 키가 없으면 기본값 `0`을 반환. 등장 횟수는 `map.put(key, map.getOrDefault(key, 0) + 1)`로 갱신 |
+| `for (String name : names)` | 인덱스 없이 배열의 원소를 하나씩 꺼내는 향상된 for문 |
 
 ## 다시 풀어볼 문제
 
