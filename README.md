@@ -26,6 +26,9 @@ Java 알고리즘 문제풀이 저장소입니다. 하루 약 30분씩 꾸준히
 | `HashMap<String, Integer>`, `put(key, value)`, `get(key)` | 문자열 키로 정수 값을 저장하고 조회. 같은 키로 `put()`하면 기존 값을 덮어씀 |
 | `map.getOrDefault(key, 0)` | 키가 없으면 기본값 `0`을 반환. 등장 횟수는 `map.put(key, map.getOrDefault(key, 0) + 1)`로 갱신 |
 | `for (String name : names)` | 인덱스 없이 배열의 원소를 하나씩 꺼내는 향상된 for문 |
+| `Deque<Character> stack = new ArrayDeque<>()` | 양쪽 끝에서 삽입·삭제할 수 있는 덱을 스택으로 사용 |
+| `stack.push(value)`, `pop()`, `peek()`, `isEmpty()` | 맨 위에 추가, 제거하며 반환, 제거 없이 조회, 비었는지 확인. 빈 덱에서 `pop()`은 예외, `peek()`는 `null` |
+| `s.charAt(i)` | 문자열의 0부터 시작하는 인덱스에서 `char` 하나를 가져옴. 괄호 한 글자는 `'('`처럼 작은따옴표로 표현 |
 
 ## 다시 풀어볼 문제
 
