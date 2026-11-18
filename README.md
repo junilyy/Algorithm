@@ -5,9 +5,10 @@ Java 알고리즘 문제풀이 저장소입니다. 하루 약 30분씩 꾸준히
 ## 문제풀이
 
 - [BOJ](boj/solvedac/): 기존 백준 풀이 기록
-- [Programmers](programmers/): 앞으로 추가할 프로그래머스 풀이 기록
+- [Programmers](programmers/): 기존 프로그래머스 풀이 기록
+- [LeetCode](leetcode/): 현재 주력 문제풀이 기록
 
-프로그래머스 풀이는 `programmers/<유형>/<문제번호>_<문제명>/Solution.java`에 저장합니다.
+새 풀이는 `leetcode/<유형>/<문제번호>_<문제명>/Solution.java`에 저장합니다.
 유형 폴더(`implementation`, `data-structure`, `sorting`, `brute-force`, `search`, `greedy`, `dp`)는 해당 문제를 풀 때 생성합니다.
 문제명의 공백은 `_`로 바꾸고, 코드 상단 주석에 원본 문제 URL을 남깁니다. 풀이를 저장한 뒤 커밋합니다.
 
