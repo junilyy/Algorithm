@@ -37,6 +37,8 @@ Java 알고리즘 문제풀이 저장소입니다. 하루 약 30분씩 꾸준히
 | `map.containsKey(key)` | 해당 키가 존재하면 `true`, 없으면 `false` 반환 |
 | `Set<Integer> seen = new HashSet<>()`, `seen.contains(value)` | 중복 없이 값을 저장하는 집합 선언. 해당 값이 있으면 `true`, 없으면 `false` 반환 |
 | `seen.add(value)` | 새 값을 추가하면 `true`, 이미 있는 값이면 집합을 변경하지 않고 `false` 반환 |
+| `map.keySet()` | 키의 집합을 반환. `for (char key : map.keySet())`처럼 키별로 순회 |
+| `map.values()` | 값의 컬렉션을 반환하며 중복 값도 포함. `for (int count : map.values())`처럼 값별로 순회 |
 
 ## 다시 풀어볼 문제
 
